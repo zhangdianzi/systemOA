@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.manager.admin.common.mapper.LoginLogMapper" >
+  <resultMap id="BaseResultMap" type="com.manager.admin.common.to.LoginLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="VARCHAR" />
+    <result column="context" property="context" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="net" property="net" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <trim prefix="where" prefixOverrides="and|or" >
+      <if test="condition.account != null" >
+         and account = #{condition.account}
+      </if>
+      <if test="condition.password != null" >
+         and password = #{condition.password}
+      </if>
+      <if test="condition.action != null" >
+         and action = #{condition.action}
+      </if>
+      <if test="condition.context != null" >
+         and context = #{condition.context}
+      </if>
+      <if test="condition.ip != null" >
+         and ip = #{condition.ip}
+      </if>
+      <if test="condition.createTime != null" >
+         and createTime = #{condition.createTime}
+      </if>
+      <if test="condition.province != null" >
+         and province = #{condition.province}
+      </if>
+      <if test="condition.area != null" >
+         and area = #{condition.area}
+      </if>
+      <if test="condition.net != null" >
+         and net = #{condition.net}
+      </if>
+    </trim>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, account, password, action, context, ip, createTime, province, area, net
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.manager.admin.common.to.Criteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from login_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="common.Mysql_Pagination_Limit" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from login_log
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from login_log
+    where id = #{id}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.manager.admin.common.to.Criteria" >
+    delete from login_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.manager.admin.common.to.LoginLog" >
+    insert into login_log (id, account, password, action, context, ip, createTime, 
+      province, area, net)
+    values (#{id}, #{account}, #{password}, #{action}, #{context}, #{ip}, #{createTime}, 
+      #{province}, #{area}, #{net})
+  </insert>
+  <insert id="insertSelective" parameterType="com.manager.admin.common.to.LoginLog" >
+    insert into login_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="action != null" >
+        action,
+      </if>
+      <if test="context != null" >
+        context,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="net != null" >
+        net,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="account != null" >
+        #{account},
+      </if>
+      <if test="password != null" >
+        #{password},
+      </if>
+      <if test="action != null" >
+        #{action},
+      </if>
+      <if test="context != null" >
+        #{context},
+      </if>
+      <if test="ip != null" >
+        #{ip},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="province != null" >
+        #{province},
+      </if>
+      <if test="area != null" >
+        #{area},
+      </if>
+      <if test="net != null" >
+        #{net},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.manager.admin.common.to.Criteria" resultType="java.lang.Integer" >
+    select count(*) from login_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectLogFailNumByIP" parameterType="java.lang.String" resultType="java.lang.Integer" >
+    select count(*) from login_log WHERE ip = #{ip} AND context='账号/密码错误' AND DATE(createTime)=DATE(NOW())
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update login_log
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password},
+      </if>
+      <if test="record.action != null" >
+        action = #{record.action},
+      </if>
+      <if test="record.context != null" >
+        context = #{record.context},
+      </if>
+      <if test="record.ip != null" >
+        ip = #{record.ip},
+      </if>
+      <if test="record.createTime != null" >
+        createTime = #{record.createTime},
+      </if>
+      <if test="record.province != null" >
+        province = #{record.province},
+      </if>
+      <if test="record.area != null" >
+        area = #{record.area},
+      </if>
+      <if test="record.net != null" >
+        net = #{record.net},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update login_log
+    set id = #{record.id},
+      account = #{record.account},
+      password = #{record.password},
+      action = #{record.action},
+      context = #{record.context},
+      ip = #{record.ip},
+      createTime = #{record.createTime},
+      province = #{record.province},
+      area = #{record.area},
+      net = #{record.net}
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.manager.admin.common.to.LoginLog" >
+    update login_log
+    <set >
+      <if test="account != null" >
+        account = #{account},
+      </if>
+      <if test="password != null" >
+        password = #{password},
+      </if>
+      <if test="action != null" >
+        action = #{action},
+      </if>
+      <if test="context != null" >
+        context = #{context},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime},
+      </if>
+      <if test="province != null" >
+        province = #{province},
+      </if>
+      <if test="area != null" >
+        area = #{area},
+      </if>
+      <if test="net != null" >
+        net = #{net},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.manager.admin.common.to.LoginLog" >
+    update login_log
+    set account = #{account},
+      password = #{password},
+      action = #{action},
+      context = #{context},
+      ip = #{ip},
+      createTime = #{createTime},
+      province = #{province},
+      area = #{area},
+      net = #{net}
+    where id = #{id}
+  </update>
+</mapper>

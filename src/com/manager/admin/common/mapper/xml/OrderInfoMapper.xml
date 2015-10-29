@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manager.admin.common.mapper.OrderInfoMapper">
+
+	<resultMap id="BaseResultMap" type="com.manager.admin.common.to.OrderInfo">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="data_state" property="data_state" jdbcType="INTEGER" />
+		<result column="data_name" property="data_name" jdbcType="VARCHAR" />
+		<result column="data_sfz" property="data_sfz" jdbcType="VARCHAR" />
+		<result column="data_gzdw" property="data_gzdw" jdbcType="VARCHAR" />
+		<result column="data_jtdz" property="data_jtdz" jdbcType="VARCHAR" />
+		<result column="data_lxfs" property="data_lxfs" jdbcType="VARCHAR" />
+		<result column="data_gfje" property="data_gfje" jdbcType="INTEGER" />
+		<result column="data_sqje" property="data_sqje" jdbcType="INTEGER" />
+		<result column="data_fkje" property="data_fkje" jdbcType="INTEGER" />
+		<result column="data_gfxx" property="data_gfxx" jdbcType="VARCHAR" />
+		<result column="data_ywnr" property="data_ywnr" jdbcType="INTEGER" />
+		<result column="data_bgdh" property="data_bgdh" jdbcType="VARCHAR" />
+		<result column="partner_name" property="partner_name" jdbcType="VARCHAR" />
+		<result column="partner_sfz" property="partner_sfz" jdbcType="VARCHAR" />
+		<result column="partner_gzdw" property="partner_gzdw" jdbcType="VARCHAR" />
+		<result column="partner_lxfs" property="partner_lxfs" jdbcType="VARCHAR" />
+		<result column="partner_jtdz" property="partner_jtdz" jdbcType="VARCHAR" />
+		<result column="data_srzm" property="data_srzm" jdbcType="INTEGER" />
+		<result column="data_zxbg" property="data_zxbg" jdbcType="INTEGER" />
+		<result column="data_jhz" property="data_jhz" jdbcType="INTEGER" />
+		<result column="data_zczm" property="data_zczm" jdbcType="INTEGER" />
+		<result column="data_hkb" property="data_hkb" jdbcType="INTEGER" />
+		<result column="data_yhls" property="data_yhls" jdbcType="INTEGER" />
+		<result column="data_gfht" property="data_gfht" jdbcType="INTEGER" />
+		<result column="data_djsj" property="data_djsj" jdbcType="INTEGER" />
+		<result column="data_fcz" property="data_fcz" jdbcType="INTEGER" />
+		<result column="salesman" property="salesman" jdbcType="INTEGER" />
+		<result column="controlman" property="controlman" jdbcType="INTEGER" />
+		<result column="controlman_note1" property="controlman_note1"
+			jdbcType="VARCHAR" />
+		<result column="controlman_note2" property="controlman_note2"
+			jdbcType="VARCHAR" />
+		<result column="controlman_note3" property="controlman_note3"
+			jdbcType="VARCHAR" />
+		<result column="controlman_note4" property="controlman_note4"
+			jdbcType="VARCHAR" />
+		<result column="controlman_note5" property="controlman_note5"
+			jdbcType="VARCHAR" />
+		<result column="manager" property="manager" jdbcType="INTEGER" />
+		<result column="manager_note1" property="manager_note1"
+			jdbcType="VARCHAR" />
+		<result column="manager_note2" property="manager_note2"
+			jdbcType="VARCHAR" />
+		<result column="manager_note3" property="manager_note3"
+			jdbcType="VARCHAR" />
+		<result column="manager_note4" property="manager_note4"
+			jdbcType="VARCHAR" />
+		<result column="manager_note5" property="manager_note5"
+			jdbcType="VARCHAR" />
+		<result column="documentary" property="documentary" jdbcType="INTEGER" />
+		<result column="submit_note1" property="submit_note1" jdbcType="VARCHAR" />
+		<result column="submit_note2" property="submit_note2" jdbcType="VARCHAR" />
+		<result column="submit_note3" property="submit_note3" jdbcType="VARCHAR" />
+		<result column="submit_note4" property="submit_note4" jdbcType="VARCHAR" />
+		<result column="submit_note5" property="submit_note5" jdbcType="VARCHAR" />
+		<result column="fail_note" property="fail_note" jdbcType="VARCHAR" />
+		<result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="condition.data_state != null">and data_state =
+				#{condition.data_state}
+			</if>
+			<if test="condition.data_name != null">and data_name =
+				#{condition.data_name}
+			</if>
+			<if test="condition.data_sfz != null">and data_sfz =
+				#{condition.data_sfz}
+			</if>
+			<if test="condition.data_gzdw != null">and data_gzdw =
+				#{condition.data_gzdw}
+			</if>
+			<if test="condition.data_jtdz != null">and data_jtdz =
+				#{condition.data_jtdz}
+			</if>
+			<if test="condition.data_lxfs != null">and data_lxfs =
+				#{condition.data_lxfs}
+			</if>
+			<if test="condition.data_gfje != null">and data_gfje =
+				#{condition.data_gfje}
+			</if>
+			<if test="condition.data_sqje != null">and data_sqje =
+				#{condition.data_sqje}
+			</if>
+			<if test="condition.data_fkje != null">and data_fkje =
+				#{condition.data_fkje}
+			</if>
+			<if test="condition.data_gfxx != null">and data_gfxx =
+				#{condition.data_gfxx}
+			</if>
+			<if test="condition.data_ywnr != null">and data_ywnr =
+				#{condition.data_ywnr}
+			</if>
+			<if test="condition.data_bgdh != null">and data_bgdh =
+				#{condition.data_bgdh}
+			</if>
+			<if test="condition.partner_name != null">and partner_name =
+				#{condition.partner_name}
+			</if>
+			<if test="condition.partner_sfz != null">and partner_sfz =
+				#{condition.partner_sfz}
+			</if>
+			<if test="condition.partner_gzdw != null">and partner_gzdw =
+				#{condition.partner_gzdw}
+			</if>
+			<if test="condition.partner_lxfs != null">and partner_lxfs =
+				#{condition.partner_lxfs}
+			</if>
+			<if test="condition.partner_jtdz != null">and partner_jtdz =
+				#{condition.partner_jtdz}
+			</if>
+			<if test="condition.data_srzm != null">and data_srzm =
+				#{condition.data_srzm}
+			</if>
+			<if test="condition.data_zxbg != null">and data_zxbg =
+				#{condition.data_zxbg}
+			</if>
+			<if test="condition.data_jhz != null">and data_jhz =
+				#{condition.data_jhz}
+			</if>
+			<if test="condition.data_zczm != null">and data_zczm =
+				#{condition.data_zczm}
+			</if>
+			<if test="condition.data_hkb != null">and data_hkb =
+				#{condition.data_hkb}
+			</if>
+			<if test="condition.data_yhls != null">and data_yhls =
+				#{condition.data_yhls}
+			</if>
+			<if test="condition.data_gfht != null">and data_gfht =
+				#{condition.data_gfht}
+			</if>
+			<if test="condition.data_djsj != null">and data_djsj =
+				#{condition.data_djsj}
+			</if>
+			<if test="condition.data_fcz != null">and data_fcz =
+				#{condition.data_fcz}
+			</if>
+			<if test="condition.salesman != null">and salesman =
+				#{condition.salesman}
+			</if>
+			<if test="condition.controlman != null">and controlman =
+				#{condition.controlman}
+			</if>
+			<if test="condition.controlman_note1 != null">and
+				controlman_note1 = #{condition.controlman_note1}
+			</if>
+			<if test="condition.controlman_note2 != null">and
+				controlman_note2 = #{condition.controlman_note2}
+			</if>
+			<if test="condition.controlman_note3 != null">and
+				controlman_note3 = #{condition.controlman_note3}
+			</if>
+			<if test="condition.controlman_note4 != null">and
+				controlman_note4 = #{condition.controlman_note4}
+			</if>
+			<if test="condition.controlman_note5 != null">and
+				controlman_note5 = #{condition.controlman_note5}
+			</if>
+			<if test="condition.manager != null">and manager =
+				#{condition.manager}
+			</if>
+			<if test="condition.manager_note1 != null">and manager_note1
+				= #{condition.manager_note1}
+			</if>
+			<if test="condition.manager_note2 != null">and manager_note2
+				= #{condition.manager_note2}
+			</if>
+			<if test="condition.manager_note3 != null">and manager_note3
+				= #{condition.manager_note3}
+			</if>
+			<if test="condition.manager_note4 != null">and manager_note4
+				= #{condition.manager_note4}
+			</if>
+			<if test="condition.manager_note5 != null">and manager_note5
+				= #{condition.manager_note5}
+			</if>
+			<if test="condition.documentary != null">and documentary =
+				#{condition.documentary}
+			</if>
+			<if test="condition.submit_note1 != null">and submit_note1 =
+				#{condition.submit_note1}
+			</if>
+			<if test="condition.submit_note2 != null">and submit_note2 =
+				#{condition.submit_note2}
+			</if>
+			<if test="condition.submit_note3 != null">and submit_note3 =
+				#{condition.submit_note3}
+			</if>
+			<if test="condition.submit_note4 != null">and submit_note4 =
+				#{condition.submit_note4}
+			</if>
+			<if test="condition.submit_note5 != null">and submit_note5 =
+				#{condition.submit_note5}
+			</if>
+			<if test="condition.fail_note != null">and fail_note =
+				#{condition.fail_note}
+			</if>
+			<if test="condition.createTime != null">and createTime =
+				#{condition.createTime}
+			</if>
+			<if test="condition.updateTime != null">and updateTime =
+				#{condition.updateTime}
+			</if>
+			<if test="condition.range == 1">and
+				TO_DAYS(a.createTime)=TO_DAYS(CURDATE())
+			</if>
+			<if test="condition.range == 2">and
+				MONTH(a.createTime)=MONTH(CURDATE())
+			</if>
+			<if test="condition.data_statelessthan != null">and
+				data_state &lt;=#{condition.data_statelessthan}</if>
+			<if test="condition.data_statemorethan != null">and
+				data_state &gt;=#{condition.data_statemorethan}</if>
+			<if test="condition.data_wanzheng != null">and data_zxbg =1
+				and data_jhz =1 and data_zczm =1 and
+				data_hkb =1 and
+				data_yhls =1 and data_gfht =1 and data_djsj =1 and
+				data_fcz
+				=1
+			</if>
+			<if test="condition.data_buwanzheng != null">and
+				(data_zxbg+data_jhz+ data_zczm+ data_hkb+ data_yhls+
+				data_gfht+ data_djsj+ data_fcz+ data_srzm) !=9 and data_state =9
+				and TO_DAYS(updateTime) &lt; TO_DAYS(CURDATE())
+			</if>
+			<if test="condition.groupName != null">and groupName like
+				'${condition.groupName}'
+			</if>
+			<if test="condition.data_chaoshi != null">and
+				TO_DAYS(CURDATE())-TO_DAYS(updateTime)&gt;=2</if>
+			<if test="condition.waitToDoManager != null">and data_state
+				IN(11,21,31,41,51)
+			</if>
+			<if test="condition.waitToDoControlman != null">and
+				data_state IN(10,20,30,40,50)
+			</if>
+			<if test="condition.waitToDoGenDan != null">and data_state
+				IN(12,22,32,42,52) and TO_DAYS(updateTime) &lt; TO_DAYS(CURDATE())
+			</if>
+			<if test="condition.canSeeYeWu != null">and data_state IN(9,10,11,12,2) 
+			</if>
+			
+			
+			<if test="condition.startTime != null">and a.createTime &gt;=
+				#{condition.startTime}
+			</if>
+			<if test="condition.endTime != null">and a.createTime &lt;=
+				#{condition.endTime}
+			</if>
+		</trim>
+	</sql>
+	<sql id="Base_Column_List">id, data_state, data_name, data_sfz,
+		data_gzdw, data_jtdz,
+		data_lxfs, data_gfje, data_sqje, data_fkje,data_gfxx,data_ywnr,
+		data_bgdh,
+		partner_name, partner_sfz, partner_gzdw, partner_lxfs,
+		partner_jtdz,
+		data_srzm, data_zxbg, data_jhz, data_zczm,
+		data_hkb, data_yhls,
+		data_gfht, data_djsj, data_fcz, salesman,
+		controlman, controlman_note1,
+		controlman_note2, controlman_note3,
+		controlman_note4, controlman_note5,
+		manager, manager_note1,
+		manager_note2, manager_note3, manager_note4,
+		manager_note5,
+		documentary, submit_note1, submit_note2, submit_note3,
+		submit_note4, submit_note5, fail_note, createTime,
+		updateTime
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.manager.admin.common.to.Criteria">
+		select a.id as id, data_state,
+		data_name, data_sfz, data_gzdw,
+		data_jtdz, data_lxfs, data_gfje, data_sqje, data_fkje,data_gfxx,data_ywnr,
+		data_bgdh, partner_name, partner_sfz, partner_gzdw, partner_lxfs,
+		partner_jtdz, data_srzm,
+		data_zxbg, data_jhz, data_zczm, data_hkb,
+		data_yhls,
+		data_gfht, data_djsj, data_fcz, salesman, controlman,
+		controlman_note1, controlman_note2, controlman_note3,
+		controlman_note4, controlman_note5, manager,
+		manager_note1,
+		manager_note2, manager_note3,
+		manager_note4, manager_note5,
+		documentary, submit_note1,
+		submit_note2, submit_note3, submit_note4,
+		submit_note5,
+		fail_note, a.createTime as createTime, updateTime FROM
+		order_info a left JOIN account b ON a.salesman=b.id
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">order by ${orderByClause}</if>
+		<include refid="common.Mysql_Pagination_Limit" />
+	</select>
+	<select id="selectStateGroup" resultType="com.manager.admin.common.to.CommonTo"
+		parameterType="com.manager.admin.common.to.Criteria">
+		select data_state as 'data_int',COUNT(id) as 'num' from
+		order_info a
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		group by data_state
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from order_info where id =
+		#{id}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">delete from
+		order_info
+		where id = #{id}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.manager.admin.common.to.Criteria">
+		delete from order_info
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.manager.admin.common.to.OrderInfo">
+		insert into order_info (id,
+		data_state, data_name,
+		data_sfz, data_gzdw, data_jtdz, data_lxfs,
+		data_gfje,
+		data_sqje, data_fkje,data_gfxx,data_ywnr, data_bgdh, partner_name,
+		partner_sfz, partner_gzdw, partner_lxfs, partner_jtdz,
+		data_srzm,
+		data_zxbg, data_jhz, data_zczm, data_hkb,
+		data_yhls, data_gfht,
+		data_djsj, data_fcz, salesman,
+		controlman, controlman_note1,
+		controlman_note2,
+		controlman_note3, controlman_note4, controlman_note5,
+		manager, manager_note1, manager_note2, manager_note3,
+		manager_note4,
+		manager_note5, documentary, submit_note1,
+		submit_note2, submit_note3,
+		submit_note4, submit_note5,
+		fail_note, createTime, updateTime) values
+		(#{id},
+		#{data_state}, #{data_name}, #{data_sfz}, #{data_gzdw},
+		#{data_jtdz}, #{data_lxfs}, #{data_gfje}, #{data_sqje},
+		#{data_fkje},#{data_gfxx},#{data_ywnr}, #{data_bgdh}, #{partner_name},
+		#{partner_sfz}, #{partner_gzdw}, #{partner_lxfs},
+		#{partner_jtdz},
+		#{data_srzm}, #{data_zxbg}, #{data_jhz},
+		#{data_zczm}, #{data_hkb},
+		#{data_yhls}, #{data_gfht},
+		#{data_djsj}, #{data_fcz}, #{salesman},
+		#{controlman},
+		#{controlman_note1}, #{controlman_note2},
+		#{controlman_note3}, #{controlman_note4},
+		#{controlman_note5},
+		#{manager}, #{manager_note1},
+		#{manager_note2}, #{manager_note3},
+		#{manager_note4},
+		#{manager_note5}, #{documentary}, #{submit_note1},
+		#{submit_note2}, #{submit_note3}, #{submit_note4},
+		#{submit_note5},
+		#{fail_note}, #{createTime},
+		#{updateTime})
+	</insert>
+	<insert id="insertSelective" parameterType="com.manager.admin.common.to.OrderInfo">
+		insert into order_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="data_state != null">data_state,</if>
+			<if test="data_name != null">data_name,</if>
+			<if test="data_sfz != null">data_sfz,</if>
+			<if test="data_gzdw != null">data_gzdw,</if>
+			<if test="data_jtdz != null">data_jtdz,</if>
+			<if test="data_lxfs != null">data_lxfs,</if>
+			<if test="data_gfje != null">data_gfje,</if>
+			<if test="data_sqje != null">data_sqje,</if>
+			<if test="data_fkje != null">data_fkje,</if>
+			<if test="data_gfxx != null">data_gfxx,</if>
+			<if test="data_ywnr != null">data_ywnr,</if>
+			<if test="data_bgdh != null">data_bgdh,</if>
+			<if test="partner_name != null">partner_name,</if>
+			<if test="partner_sfz != null">partner_sfz,</if>
+			<if test="partner_gzdw != null">partner_gzdw,</if>
+			<if test="partner_lxfs != null">partner_lxfs,</if>
+			<if test="partner_jtdz != null">partner_jtdz,</if>
+			<if test="data_srzm != null">data_srzm,</if>
+			<if test="data_zxbg != null">data_zxbg,</if>
+			<if test="data_jhz != null">data_jhz,</if>
+			<if test="data_zczm != null">data_zczm,</if>
+			<if test="data_hkb != null">data_hkb,</if>
+			<if test="data_yhls != null">data_yhls,</if>
+			<if test="data_gfht != null">data_gfht,</if>
+			<if test="data_djsj != null">data_djsj,</if>
+			<if test="data_fcz != null">data_fcz,</if>
+			<if test="salesman != null">salesman,</if>
+			<if test="controlman != null">controlman,</if>
+			<if test="controlman_note1 != null">controlman_note1,</if>
+			<if test="controlman_note2 != null">controlman_note2,</if>
+			<if test="controlman_note3 != null">controlman_note3,</if>
+			<if test="controlman_note4 != null">controlman_note4,</if>
+			<if test="controlman_note5 != null">controlman_note5,</if>
+			<if test="manager != null">manager,</if>
+			<if test="manager_note1 != null">manager_note1,</if>
+			<if test="manager_note2 != null">manager_note2,</if>
+			<if test="manager_note3 != null">manager_note3,</if>
+			<if test="manager_note4 != null">manager_note4,</if>
+			<if test="manager_note5 != null">manager_note5,</if>
+			<if test="documentary != null">documentary,</if>
+			<if test="submit_note1 != null">submit_note1,</if>
+			<if test="submit_note2 != null">submit_note2,</if>
+			<if test="submit_note3 != null">submit_note3,</if>
+			<if test="submit_note4 != null">submit_note4,</if>
+			<if test="submit_note5 != null">submit_note5,</if>
+			<if test="fail_note != null">fail_note,</if>
+			<if test="createTime != null">createTime,</if>
+			<if test="updateTime != null">updateTime,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id},</if>
+			<if test="data_state != null">#{data_state},</if>
+			<if test="data_name != null">#{data_name},</if>
+			<if test="data_sfz != null">#{data_sfz},</if>
+			<if test="data_gzdw != null">#{data_gzdw},</if>
+			<if test="data_jtdz != null">#{data_jtdz},</if>
+			<if test="data_lxfs != null">#{data_lxfs},</if>
+			<if test="data_gfje != null">#{data_gfje},</if>
+			<if test="data_sqje != null">#{data_sqje},</if>
+			<if test="data_fkje != null">#{data_fkje},</if>
+			<if test="data_gfxx != null">#{data_gfxx},</if>
+			<if test="data_ywnr != null">#{data_ywnr},</if>
+			<if test="data_bgdh != null">#{data_bgdh},</if>
+			<if test="partner_name != null">#{partner_name},</if>
+			<if test="partner_sfz != null">#{partner_sfz},</if>
+			<if test="partner_gzdw != null">#{partner_gzdw},</if>
+			<if test="partner_lxfs != null">#{partner_lxfs},</if>
+			<if test="partner_jtdz != null">#{partner_jtdz},</if>
+			<if test="data_srzm != null">#{data_srzm},</if>
+			<if test="data_zxbg != null">#{data_zxbg},</if>
+			<if test="data_jhz != null">#{data_jhz},</if>
+			<if test="data_zczm != null">#{data_zczm},</if>
+			<if test="data_hkb != null">#{data_hkb},</if>
+			<if test="data_yhls != null">#{data_yhls},</if>
+			<if test="data_gfht != null">#{data_gfht},</if>
+			<if test="data_djsj != null">#{data_djsj},</if>
+			<if test="data_fcz != null">#{data_fcz},</if>
+			<if test="salesman != null">#{salesman},</if>
+			<if test="controlman != null">#{controlman},</if>
+			<if test="controlman_note1 != null">#{controlman_note1},</if>
+			<if test="controlman_note2 != null">#{controlman_note2},</if>
+			<if test="controlman_note3 != null">#{controlman_note3},</if>
+			<if test="controlman_note4 != null">#{controlman_note4},</if>
+			<if test="controlman_note5 != null">#{controlman_note5},</if>
+			<if test="manager != null">#{manager},</if>
+			<if test="manager_note1 != null">#{manager_note1},</if>
+			<if test="manager_note2 != null">#{manager_note2},</if>
+			<if test="manager_note3 != null">#{manager_note3},</if>
+			<if test="manager_note4 != null">#{manager_note4},</if>
+			<if test="manager_note5 != null">#{manager_note5},</if>
+			<if test="documentary != null">#{documentary},</if>
+			<if test="submit_note1 != null">#{submit_note1},</if>
+			<if test="submit_note2 != null">#{submit_note2},</if>
+			<if test="submit_note3 != null">#{submit_note3},</if>
+			<if test="submit_note4 != null">#{submit_note4},</if>
+			<if test="submit_note5 != null">#{submit_note5},</if>
+			<if test="fail_note != null">#{fail_note},</if>
+			<if test="createTime != null">#{createTime},</if>
+			<if test="updateTime != null">#{updateTime},</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.manager.admin.common.to.Criteria"
+		resultType="java.lang.Integer">
+		select count(*) from
+		order_info a left JOIN account b ON
+		a.salesman=b.id
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update order_info
+		<set>
+			<if test="record.id != null">id = #{record.id},</if>
+			<if test="record.data_state != null">data_state =
+				#{record.data_state},
+			</if>
+			<if test="record.data_name != null">data_name =
+				#{record.data_name},
+			</if>
+			<if test="record.data_sfz != null">data_sfz =
+				#{record.data_sfz},
+			</if>
+			<if test="record.data_gzdw != null">data_gzdw =
+				#{record.data_gzdw},
+			</if>
+			<if test="record.data_jtdz != null">data_jtdz =
+				#{record.data_jtdz},
+			</if>
+			<if test="record.data_lxfs != null">data_lxfs =
+				#{record.data_lxfs},
+			</if>
+			<if test="record.data_gfje != null">data_gfje =
+				#{record.data_gfje},
+			</if>
+			<if test="record.data_sqje != null">data_sqje =
+				#{record.data_sqje},
+			</if>
+			<if test="record.data_fkje != null">data_fkje =
+				#{record.data_fkje},
+			</if>
+			<if test="record.data_gfxx != null">data_gfxx =
+				#{record.data_gfxx},
+			</if>
+			<if test="record.data_ywnr != null">data_ywnr =
+				#{record.data_ywnr},
+			</if>
+			<if test="record.data_bgdh != null">data_bgdh =
+				#{record.data_bgdh},
+			</if>
+			<if test="record.partner_name != null">partner_name =
+				#{record.partner_name},
+			</if>
+			<if test="record.partner_sfz != null">partner_sfz =
+				#{record.partner_sfz},
+			</if>
+			<if test="record.partner_gzdw != null">partner_gzdw =
+				#{record.partner_gzdw},
+			</if>
+			<if test="record.partner_lxfs != null">partner_lxfs =
+				#{record.partner_lxfs},
+			</if>
+			<if test="record.partner_jtdz != null">partner_jtdz =
+				#{record.partner_jtdz},
+			</if>
+			<if test="record.data_srzm != null">data_srzm =
+				#{record.data_srzm},
+			</if>
+			<if test="record.data_zxbg != null">data_zxbg =
+				#{record.data_zxbg},
+			</if>
+			<if test="record.data_jhz != null">data_jhz =
+				#{record.data_jhz},
+			</if>
+			<if test="record.data_zczm != null">data_zczm =
+				#{record.data_zczm},
+			</if>
+			<if test="record.data_hkb != null">data_hkb =
+				#{record.data_hkb},
+			</if>
+			<if test="record.data_yhls != null">data_yhls =
+				#{record.data_yhls},
+			</if>
+			<if test="record.data_gfht != null">data_gfht =
+				#{record.data_gfht},
+			</if>
+			<if test="record.data_djsj != null">data_djsj =
+				#{record.data_djsj},
+			</if>
+			<if test="record.data_fcz != null">data_fcz =
+				#{record.data_fcz},
+			</if>
+			<if test="record.salesman != null">salesman =
+				#{record.salesman},
+			</if>
+			<if test="record.controlman != null">controlman =
+				#{record.controlman},
+			</if>
+			<if test="record.controlman_note1 != null">controlman_note1 =
+				#{record.controlman_note1},
+			</if>
+			<if test="record.controlman_note2 != null">controlman_note2 =
+				#{record.controlman_note2},
+			</if>
+			<if test="record.controlman_note3 != null">controlman_note3 =
+				#{record.controlman_note3},
+			</if>
+			<if test="record.controlman_note4 != null">controlman_note4 =
+				#{record.controlman_note4},
+			</if>
+			<if test="record.controlman_note5 != null">controlman_note5 =
+				#{record.controlman_note5},
+			</if>
+			<if test="record.manager != null">manager =
+				#{record.manager},
+			</if>
+			<if test="record.manager_note1 != null">manager_note1 =
+				#{record.manager_note1},
+			</if>
+			<if test="record.manager_note2 != null">manager_note2 =
+				#{record.manager_note2},
+			</if>
+			<if test="record.manager_note3 != null">manager_note3 =
+				#{record.manager_note3},
+			</if>
+			<if test="record.manager_note4 != null">manager_note4 =
+				#{record.manager_note4},
+			</if>
+			<if test="record.manager_note5 != null">manager_note5 =
+				#{record.manager_note5},
+			</if>
+			<if test="record.documentary != null">documentary =
+				#{record.documentary},
+			</if>
+			<if test="record.submit_note1 != null">submit_note1 =
+				#{record.submit_note1},
+			</if>
+			<if test="record.submit_note2 != null">submit_note2 =
+				#{record.submit_note2},
+			</if>
+			<if test="record.submit_note3 != null">submit_note3 =
+				#{record.submit_note3},
+			</if>
+			<if test="record.submit_note4 != null">submit_note4 =
+				#{record.submit_note4},
+			</if>
+			<if test="record.submit_note5 != null">submit_note5 =
+				#{record.submit_note5},
+			</if>
+			<if test="record.fail_note != null">fail_note =
+				#{record.fail_note},
+			</if>
+			<if test="record.createTime != null">createTime =
+				#{record.createTime},
+			</if>
+			<if test="record.updateTime != null">updateTime =
+				#{record.updateTime},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update order_info set id =
+		#{record.id}, data_state =
+		#{record.data_state},
+		data_name = #{record.data_name}, data_sfz =
+		#{record.data_sfz}, data_gzdw = #{record.data_gzdw},
+		data_jtdz =
+		#{record.data_jtdz}, data_lxfs =
+		#{record.data_lxfs}, data_gfje =
+		#{record.data_gfje},
+		data_sqje = #{record.data_sqje}, data_fkje =
+		#{record.data_fkje},
+		data_gfxx=#{record.data.gfxx},
+		data_ywnr=#{record.data_ywnr}, data_bgdh =
+		#{record.data_bgdh},
+		partner_name = #{record.partner_name}, partner_sfz
+		=
+		#{record.partner_sfz}, partner_gzdw =
+		#{record.partner_gzdw},
+		partner_lxfs =
+		#{record.partner_lxfs}, partner_jtdz =
+		#{record.partner_jtdz}, data_srzm = #{record.data_srzm},
+		data_zxbg =
+		#{record.data_zxbg}, data_jhz =
+		#{record.data_jhz}, data_zczm =
+		#{record.data_zczm},
+		data_hkb = #{record.data_hkb}, data_yhls =
+		#{record.data_yhls}, data_gfht = #{record.data_gfht},
+		data_djsj =
+		#{record.data_djsj}, data_fcz =
+		#{record.data_fcz}, salesman =
+		#{record.salesman},
+		controlman = #{record.controlman}, controlman_note1
+		=
+		#{record.controlman_note1}, controlman_note2 =
+		#{record.controlman_note2}, controlman_note3 =
+		#{record.controlman_note3}, controlman_note4 =
+		#{record.controlman_note4}, controlman_note5 =
+		#{record.controlman_note5}, manager = #{record.manager},
+		manager_note1
+		= #{record.manager_note1}, manager_note2 =
+		#{record.manager_note2},
+		manager_note3 =
+		#{record.manager_note3}, manager_note4 =
+		#{record.manager_note4}, manager_note5 =
+		#{record.manager_note5},
+		documentary =
+		#{record.documentary}, submit_note1 =
+		#{record.submit_note1}, submit_note2 =
+		#{record.submit_note2},
+		submit_note3 =
+		#{record.submit_note3}, submit_note4 =
+		#{record.submit_note4}, submit_note5 =
+		#{record.submit_note5},
+		fail_note = #{record.fail_note},
+		createTime = #{record.createTime},
+		updateTime =
+		#{record.updateTime}
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.manager.admin.common.to.OrderInfo">
+		update order_info
+		<set>
+			<if test="data_state != null">data_state = #{data_state},</if>
+			<if test="data_name != null">data_name = #{data_name},</if>
+			<if test="data_sfz != null">data_sfz = #{data_sfz},</if>
+			<if test="data_gzdw != null">data_gzdw = #{data_gzdw},</if>
+			<if test="data_jtdz != null">data_jtdz = #{data_jtdz},</if>
+			<if test="data_lxfs != null">data_lxfs = #{data_lxfs},</if>
+			<if test="data_gfje != null">data_gfje = #{data_gfje},</if>
+			<if test="data_sqje != null">data_sqje = #{data_sqje},</if>
+			<if test="data_fkje != null">data_fkje = #{data_fkje},</if>
+			<if test="data_gfxx != null">data_gfxx = #{data_gfxx},</if>
+			<if test="data_ywnr != null">data_ywnr = #{data_ywnr},</if>
+			<if test="data_bgdh != null">data_bgdh = #{data_bgdh},</if>
+			<if test="partner_name != null">partner_name =
+				#{partner_name},
+			</if>
+			<if test="partner_sfz != null">partner_sfz =
+				#{partner_sfz},
+			</if>
+			<if test="partner_gzdw != null">partner_gzdw =
+				#{partner_gzdw},
+			</if>
+			<if test="partner_lxfs != null">partner_lxfs =
+				#{partner_lxfs},
+			</if>
+			<if test="partner_jtdz != null">partner_jtdz =
+				#{partner_jtdz},
+			</if>
+			<if test="data_srzm != null">data_srzm = #{data_srzm},</if>
+			<if test="data_zxbg != null">data_zxbg = #{data_zxbg},</if>
+			<if test="data_jhz != null">data_jhz = #{data_jhz},</if>
+			<if test="data_zczm != null">data_zczm = #{data_zczm},</if>
+			<if test="data_hkb != null">data_hkb = #{data_hkb},</if>
+			<if test="data_yhls != null">data_yhls = #{data_yhls},</if>
+			<if test="data_gfht != null">data_gfht = #{data_gfht},</if>
+			<if test="data_djsj != null">data_djsj = #{data_djsj},</if>
+			<if test="data_fcz != null">data_fcz = #{data_fcz},</if>
+			<if test="salesman != null">salesman = #{salesman},</if>
+			<if test="controlman != null">controlman = #{controlman},</if>
+			<if test="controlman_note1 != null">controlman_note1 =
+				#{controlman_note1},
+			</if>
+			<if test="controlman_note2 != null">controlman_note2 =
+				#{controlman_note2},
+			</if>
+			<if test="controlman_note3 != null">controlman_note3 =
+				#{controlman_note3},
+			</if>
+			<if test="controlman_note4 != null">controlman_note4 =
+				#{controlman_note4},
+			</if>
+			<if test="controlman_note5 != null">controlman_note5 =
+				#{controlman_note5},
+			</if>
+			<if test="manager != null">manager = #{manager},</if>
+			<if test="manager_note1 != null">manager_note1 =
+				#{manager_note1},
+			</if>
+			<if test="manager_note2 != null">manager_note2 =
+				#{manager_note2},
+			</if>
+			<if test="manager_note3 != null">manager_note3 =
+				#{manager_note3},
+			</if>
+			<if test="manager_note4 != null">manager_note4 =
+				#{manager_note4},
+			</if>
+			<if test="manager_note5 != null">manager_note5 =
+				#{manager_note5},
+			</if>
+			<if test="documentary != null">documentary =
+				#{documentary},
+			</if>
+			<if test="submit_note1 != null">submit_note1 =
+				#{submit_note1},
+			</if>
+			<if test="submit_note2 != null">submit_note2 =
+				#{submit_note2},
+			</if>
+			<if test="submit_note3 != null">submit_note3 =
+				#{submit_note3},
+			</if>
+			<if test="submit_note4 != null">submit_note4 =
+				#{submit_note4},
+			</if>
+			<if test="submit_note5 != null">submit_note5 =
+				#{submit_note5},
+			</if>
+			<if test="fail_note != null">fail_note = #{fail_note},</if>
+			<if test="createTime != null">createTime = #{createTime},</if>
+			<if test="updateTime != null">updateTime = #{updateTime},</if>
+		</set>
+		where id = #{id}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.manager.admin.common.to.OrderInfo">
+		update order_info
+		set data_state = #{data_state},
+		data_name = #{data_name}, data_sfz =
+		#{data_sfz},
+		data_gzdw = #{data_gzdw}, data_jtdz = #{data_jtdz},
+		data_lxfs = #{data_lxfs}, data_gfje = #{data_gfje},
+		data_sqje =
+		#{data_sqje}, data_fkje = #{data_fkje}, data_gfxx=#{data_gfxx},data_ywnr=#{data_ywnr},
+		data_bgdh = #{data_bgdh}, partner_name = #{partner_name},
+		partner_sfz =
+		#{partner_sfz}, partner_gzdw =
+		#{partner_gzdw}, partner_lxfs =
+		#{partner_lxfs},
+		partner_jtdz = #{partner_jtdz}, data_srzm =
+		#{data_srzm},
+		data_zxbg = #{data_zxbg}, data_jhz = #{data_jhz},
+		data_zczm = #{data_zczm}, data_hkb = #{data_hkb},
+		data_yhls =
+		#{data_yhls}, data_gfht = #{data_gfht},
+		data_djsj = #{data_djsj},
+		data_fcz = #{data_fcz},
+		salesman = #{salesman}, controlman =
+		#{controlman},
+		controlman_note1 = #{controlman_note1}, controlman_note2
+		= #{controlman_note2}, controlman_note3 =
+		#{controlman_note3},
+		controlman_note4 =
+		#{controlman_note4}, controlman_note5 =
+		#{controlman_note5}, manager = #{manager}, manager_note1
+		=
+		#{manager_note1}, manager_note2 = #{manager_note2},
+		manager_note3 =
+		#{manager_note3}, manager_note4 =
+		#{manager_note4}, manager_note5 =
+		#{manager_note5},
+		documentary = #{documentary}, submit_note1 =
+		#{submit_note1}, submit_note2 = #{submit_note2},
+		submit_note3 =
+		#{submit_note3}, submit_note4 =
+		#{submit_note4}, submit_note5 =
+		#{submit_note5},
+		fail_note = #{fail_note}, createTime = #{createTime},
+		updateTime = #{updateTime} where id = #{id}
+	</update>
+</mapper>

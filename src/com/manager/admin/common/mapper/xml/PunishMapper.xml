@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.manager.admin.common.mapper.PunishMapper" >
+  <resultMap id="BaseResultMap" type="com.manager.admin.common.to.Punish" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="account_id" property="account_id" jdbcType="INTEGER" />
+    <result column="kinds" property="kinds" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="INTEGER" />
+    <result column="order_id" property="order_id" jdbcType="INTEGER" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <trim prefix="where" prefixOverrides="and|or" >
+      <if test="condition.account_id != null" >
+         and (account_id = #{condition.account_id} or account_id=-1)
+      </if>
+      <if test="condition.kinds != null" >
+         and kinds = #{condition.kinds}
+      </if>
+      <if test="condition.money != null" >
+         and money = #{condition.money}
+      </if>
+      <if test="condition.order_id != null" >
+         and order_id = #{condition.order_id}
+      </if>
+      <if test="condition.reason != null" >
+         and reason = #{condition.reason}
+      </if>
+      <if test="condition.groupName != null" >
+         and (groupName like '${condition.groupName}' or account_id=-1)
+      </if>
+      <if test="condition.createTime != null" >
+         and createTime = #{condition.createTime}
+      </if>
+    </trim>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, account_id, kinds, money, order_id, reason, createTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.manager.admin.common.to.Criteria" >
+    SELECT a.id AS id,a.account_id ,kinds,money,order_id,reason,a.createTime AS createTime FROM punish a LEFT JOIN account b ON a.account_id=b.id 
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="common.Mysql_Pagination_Limit" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from punish
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from punish
+    where id = #{id}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.manager.admin.common.to.Criteria" >
+    delete from punish
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.manager.admin.common.to.Punish" >
+    insert into punish (id, account_id, kinds, money, order_id, reason, createTime
+      )
+    values (#{id}, #{account_id}, #{kinds}, #{money}, #{order_id}, #{reason}, #{createTime}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.manager.admin.common.to.Punish" >
+    insert into punish
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="account_id != null" >
+        account_id,
+      </if>
+      <if test="kinds != null" >
+        kinds,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="order_id != null" >
+        order_id,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="account_id != null" >
+        #{account_id},
+      </if>
+      <if test="kinds != null" >
+        #{kinds},
+      </if>
+      <if test="money != null" >
+        #{money},
+      </if>
+      <if test="order_id != null" >
+        #{order_id},
+      </if>
+      <if test="reason != null" >
+        #{reason},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.manager.admin.common.to.Criteria" resultType="java.lang.Integer" >
+     SELECT count(*)  FROM punish a LEFT JOIN account b ON a.account_id=b.id 
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update punish
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id},
+      </if>
+      <if test="record.account_id != null" >
+        account_id = #{record.account_id},
+      </if>
+      <if test="record.kinds != null" >
+        kinds = #{record.kinds},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money},
+      </if>
+      <if test="record.order_id != null" >
+        order_id = #{record.order_id},
+      </if>
+      <if test="record.reason != null" >
+        reason = #{record.reason},
+      </if>
+      <if test="record.createTime != null" >
+        createTime = #{record.createTime},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update punish
+    set id = #{record.id},
+      account_id = #{record.account_id},
+      kinds = #{record.kinds},
+      money = #{record.money},
+      order_id = #{record.order_id},
+      reason = #{record.reason},
+      createTime = #{record.createTime}
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.manager.admin.common.to.Punish" >
+    update punish
+    <set >
+      <if test="account_id != null" >
+        account_id = #{account_id},
+      </if>
+      <if test="kinds != null" >
+        kinds = #{kinds},
+      </if>
+      <if test="money != null" >
+        money = #{money},
+      </if>
+      <if test="order_id != null" >
+        order_id = #{order_id},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.manager.admin.common.to.Punish" >
+    update punish
+    set account_id = #{account_id},
+      kinds = #{kinds},
+      money = #{money},
+      order_id = #{order_id},
+      reason = #{reason},
+      createTime = #{createTime}
+    where id = #{id}
+  </update>
+</mapper>

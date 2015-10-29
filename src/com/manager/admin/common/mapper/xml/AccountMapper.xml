@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.manager.admin.common.mapper.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.manager.admin.common.to.Account" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userName" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="roleID" property="roleID" jdbcType="INTEGER" />
+    <result column="realName" property="realName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="groupName" property="groupName" jdbcType="VARCHAR" />
+    <result column="curSalary" property="curSalary" jdbcType="INTEGER" />
+    <result column="baseSalary" property="baseSalary" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <trim prefix="where" prefixOverrides="and|or" >
+      <if test="condition.userName != null" >
+         and userName = #{condition.userName}
+      </if>
+      <if test="condition.password != null" >
+         and password = #{condition.password}
+      </if>
+      <if test="condition.roleID != null" >
+         and roleID = #{condition.roleID}
+      </if>
+      <if test="condition.realName != null" >
+         and realName = #{condition.realName}
+      </if>
+      <if test="condition.email != null" >
+         and email = #{condition.email}
+      </if>
+      <if test="condition.phone != null" >
+         and phone = #{condition.phone}
+      </if>
+      <if test="condition.address != null" >
+         and address = #{condition.address}
+      </if>
+      <if test="condition.groupName != null" >
+         and groupName = #{condition.groupName}
+      </if>
+      <if test="condition.groupNameLike != null" >
+         and groupName like '%${condition.groupNameLike}%'
+      </if>
+      <if test="condition.curSalary != null" >
+         and curSalary = #{condition.curSalary}
+      </if>
+      <if test="condition.baseSalary != null" >
+         and baseSalary = #{condition.baseSalary}
+      </if>
+      <if test="condition.state != null" >
+         and state = #{condition.state}
+      </if>
+      <if test="condition.createTime != null" >
+         and createTime = #{condition.createTime}
+      </if>
+    </trim>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, userName, password, roleID, realName, email, phone, address, groupName, curSalary, 
+    baseSalary, state, createTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.manager.admin.common.to.Criteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="groupByClause != null" >
+      group by ${groupByClause}
+    </if>
+    <include refid="common.Mysql_Pagination_Limit" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from account
+    where id = #{id}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.manager.admin.common.to.Criteria" >
+    delete from account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.manager.admin.common.to.Account" >
+    insert into account (id, userName, password, roleID, realName, email, phone, 
+      address, groupName, curSalary, baseSalary, state, createTime)
+    values (#{id}, #{userName}, #{password}, #{roleID}, #{realName}, #{email}, #{phone}, 
+      #{address}, #{groupName}, #{curSalary}, #{baseSalary}, #{state}, #{createTime})
+  </insert>
+  <insert id="insertSelective" parameterType="com.manager.admin.common.to.Account" >
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userName != null" >
+        userName,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="roleID != null" >
+        roleID,
+      </if>
+      <if test="realName != null" >
+        realName,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="groupName != null" >
+        groupName,
+      </if>
+      <if test="curSalary != null" >
+        curSalary,
+      </if>
+      <if test="baseSalary != null" >
+        baseSalary,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="userName != null" >
+        #{userName},
+      </if>
+      <if test="password != null" >
+        #{password},
+      </if>
+      <if test="roleID != null" >
+        #{roleID},
+      </if>
+      <if test="realName != null" >
+        #{realName},
+      </if>
+      <if test="email != null" >
+        #{email},
+      </if>
+      <if test="phone != null" >
+        #{phone},
+      </if>
+      <if test="address != null" >
+        #{address},
+      </if>
+      <if test="groupName != null" >
+        #{groupName},
+      </if>
+      <if test="curSalary != null" >
+        #{curSalary},
+      </if>
+      <if test="baseSalary != null" >
+        #{baseSalary},
+      </if>
+      <if test="state != null" >
+        #{state},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.manager.admin.common.to.Criteria" resultType="java.lang.Integer" >
+    select count(*) from account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update account
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id},
+      </if>
+      <if test="record.userName != null" >
+        userName = #{record.userName},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password},
+      </if>
+      <if test="record.roleID != null" >
+        roleID = #{record.roleID},
+      </if>
+      <if test="record.realName != null" >
+        realName = #{record.realName},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address},
+      </if>
+      <if test="record.groupName != null" >
+        groupName = #{record.groupName},
+      </if>
+      <if test="record.curSalary != null" >
+        curSalary = #{record.curSalary},
+      </if>
+      <if test="record.baseSalary != null" >
+        baseSalary = #{record.baseSalary},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state},
+      </if>
+      <if test="record.createTime != null" >
+        createTime = #{record.createTime},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update account
+    set id = #{record.id},
+      userName = #{record.userName},
+      password = #{record.password},
+      roleID = #{record.roleID},
+      realName = #{record.realName},
+      email = #{record.email},
+      phone = #{record.phone},
+      address = #{record.address},
+      groupName = #{record.groupName},
+      curSalary = #{record.curSalary},
+      baseSalary = #{record.baseSalary},
+      state = #{record.state},
+      createTime = #{record.createTime}
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.manager.admin.common.to.Account" >
+    update account
+    <set >
+      <if test="userName != null" >
+        userName = #{userName},
+      </if>
+      <if test="password != null" >
+        password = #{password},
+      </if>
+      <if test="roleID != null" >
+        roleID = #{roleID},
+      </if>
+      <if test="realName != null" >
+        realName = #{realName},
+      </if>
+      <if test="email != null" >
+        email = #{email},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone},
+      </if>
+      <if test="address != null" >
+        address = #{address},
+      </if>
+      <if test="groupName != null" >
+        groupName = #{groupName},
+      </if>
+      <if test="curSalary != null" >
+        curSalary = #{curSalary},
+      </if>
+      <if test="baseSalary != null" >
+        baseSalary = #{baseSalary},
+      </if>
+      <if test="state != null" >
+        state = #{state},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.manager.admin.common.to.Account" >
+    update account
+    set userName = #{userName},
+      password = #{password},
+      roleID = #{roleID},
+      realName = #{realName},
+      email = #{email},
+      phone = #{phone},
+      address = #{address},
+      groupName = #{groupName},
+      curSalary = #{curSalary},
+      baseSalary = #{baseSalary},
+      state = #{state},
+      createTime = #{createTime}
+    where id = #{id}
+  </update>
+  <update id="updateSalary" >
+UPDATE account a SET curSalary=baseSalary-(SELECT IFNULL(SUM(money),0) FROM punish WHERE account_id=a.id AND kinds=2 AND MONTH(createTime)=MONTH(CURDATE()))+(SELECT IFNULL(SUM(money),0) FROM punish WHERE account_id=a.id AND kinds=1 AND MONTH(createTime)=MONTH(CURDATE())) 
+  </update>
+</mapper>

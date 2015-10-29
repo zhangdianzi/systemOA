@@ -1,0 +1,12 @@
+/application-common.xml
+/application-ehcache.xml
+/application-task.xml
+/com
+/dataSource.properties
+/ehcache.xml
+/ftp_config.properties
+/log4j.properties
+/module.properties
+/spring-datasource.xml
+/spring-server-controller.xml
+/spring-web-controller.xml

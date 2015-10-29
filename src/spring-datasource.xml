@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<util:properties id="ds" location="classpath:dataSource.properties" />
+
+	<!-- db_datasource -->
+	<bean id="db_datasource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+            <value>#{ds['db.driver']}</value>
+        </property>
+        <property name="url">
+            <value>#{ds['db.url']}</value>
+        </property>
+        <property name="username">
+            <value>#{ds['db.username']}</value>
+        </property>
+        <property name="password">
+            <value>#{ds['db.password']}</value>
+        </property>
+        <property name="maxActive">
+            <value>#{ds['db.maxActive']}</value>
+        </property>
+        <property name="maxWait">
+            <value>#{ds['db.maxWait']}</value>
+        </property>
+	</bean>
+	<!-- MyBatis -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="db_datasource" />
+        <!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+        <property name="mapperLocations" value="classpath:com/manager/admin/common/mapper/xml/*.xml" />
+	</bean>
+	
+
+	<!-- 接口编程 -->
+	<bean name="scanner_platform" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.manager.admin.common.mapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+    
+
+</beans>
